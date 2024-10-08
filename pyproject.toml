@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "test-github-actions"
+version = "0.0.1"
+description = "Test github actions."
+authors = ["Moisés Navarro <moisalejandro@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[tool.poetry.group.dev.dependencies]
+commitizen = "^3.16.0"
+
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "$version"
+version_scheme = "pep440"
+version_provider = "poetry"
+update_changelog_on_bump = true
+version_files = ["__version__.py"]
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
