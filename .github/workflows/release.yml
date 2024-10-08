@@ -23,14 +23,12 @@ jobs:
 
       - name: Bump version and generate changelog
         run: |
-          cz bump --yes --changelog
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          cz bump
 
       - name: Push changes
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add .
-          git commit -m "ci: bump version and generate changelog [skip ci]"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
