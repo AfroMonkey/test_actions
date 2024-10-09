@@ -29,8 +29,8 @@ jobs:
 
       - name: Bump version and generate changelog
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          git config user.name "Moises Navarro"
+          git config user.email "moisalejandro@gmail.com"
           cz bump
 
       - name: Push changes
