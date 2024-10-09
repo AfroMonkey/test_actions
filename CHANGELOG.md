@@ -1,3 +1,13 @@
+## 2.0.0 (2024-10-09)
+
+### BREAKING CHANGE
+
+- breaks
+
+### Feat
+
+- breaking
+
 ## 1.1.0 (2024-10-09)
 
 ### Feat
