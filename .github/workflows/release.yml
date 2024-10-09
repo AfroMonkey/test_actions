@@ -28,7 +28,9 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git tag $(cz version --project)
+          git checkout main
+          git fetch --tags
+          echo $(git tag -l)
           cz bump
 
       - name: Push changes
