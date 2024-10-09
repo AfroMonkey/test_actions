@@ -35,7 +35,7 @@ jobs:
 
       - name: Push changes
         run: |
-          git push
+          git push -f
           git push --tags
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
