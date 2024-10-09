@@ -1,3 +1,13 @@
+## 1.0.0 (2024-10-08)
+
+### BREAKING CHANGE
+
+- breaks
+
+### Feat
+
+- breaking change
+
 ## 0.4.1 (2024-10-09)
 
 ### Fix
