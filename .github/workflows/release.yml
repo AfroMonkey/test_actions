@@ -35,6 +35,27 @@ jobs:
 
       - name: Push changes
         run: |
-          git push
+          git push --tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get current version
+        id: version
+        run: echo "::set-output name=VERSION::$(cz version --project)"
+
+      - name: Extract changelog for release
+        id: changelog
+        run: |
+          echo "::set-output name=CHANGELOG::$(cz changelog --dry-run --unreleased --stdout)"
+        shell: bash
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.VERSION }}
+          release_name: v${{ steps.version.outputs.VERSION }}
+          body: ${{ steps.changelog.outputs.CHANGELOG }}
+          draft: false
+          prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
