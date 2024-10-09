@@ -1,27 +1,16 @@
-name: Bump version
-
+name: Publish release
 on:
   push:
-    branches:
-      - main
-
-permissions:
-  contents: write
-
+    tags:
+      - "*"
 jobs:
-  bump_version:
+  publish:
+    name: Publish release
     runs-on: ubuntu-latest
-    name: "Bump version and create changelog with commitizen"
+    permissions:
+      contents: write
     steps:
-      - name: Check out
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: "${{ secrets.GITHUB_TOKEN }}"
-      - id: cz
-        name: Create bump and changelog
-        uses: commitizen-tools/commitizen-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Print Version
-        run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Publish release
+        uses: ghalactic/github-release-from-tag@v5
